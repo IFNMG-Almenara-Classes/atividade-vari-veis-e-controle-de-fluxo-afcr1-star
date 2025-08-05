@@ -2,23 +2,31 @@ package questao18;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args){
-        Scanner entrada = new Scanner(System.in);
+        public static void main(String[] args) {
+            Scanner entrada = new Scanner(System.in);
 
-        int primos = 0;
+            System.out.print("Digite o primeiro número: ");
+            int inicio = entrada.nextInt();
+            System.out.print("Digite o segundo número: ");
+            int fim = entrada.nextInt();
 
-        System.out.println("Digite o primeiro número: ");
-        int num1 = entrada.nextInt();
+            int primos = 0;
 
-        System.out.println("Digite o primeiro número: ");
-        int num2 = entrada.nextInt();
-
-        for(int i = num1; i <= num2; i++){
-            if(primos(i)){
-                primos++;
+            for (int i = inicio; i <= fim; i++) {
+                if(ehPrimo(i)) {
+                    primos++;
+                }
             }
-            System.out.println("Quantidade de numeros primos: " + primos);
+
+            System.out.println("Quantidade de números primos entre " + inicio + " e " + fim + ": " + primos);
+
         }
 
+        public static boolean ehPrimo(int n) {
+            if (n <= 1) return false;
+            for (int i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) return false;
+            }
+            return true;
+        }
     }
-}
